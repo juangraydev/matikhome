@@ -9,6 +9,8 @@ import {
 } from "react-router-dom";
 import history from "./routing";
 
+import Landing from '../modules/LandingPage/index';
+
 //Auth Pages
 import Login from '../modules/AuthPages/login';
 import Register from '../modules/AuthPages/register';
@@ -30,7 +32,7 @@ const MainRouter = (props) => {
         <Router history={history}>
             <Switch>
                 <Route exact path="/">
-                    <Login /> 
+                    <Landing /> 
                 </Route>
                 <Route exact path="/login">
                     <Login /> 
