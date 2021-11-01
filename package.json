@@ -1,0 +1,11 @@
+{
+  "name": "matic",
+  "version": "1.0.0",
+  "description": "matic home automation system",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jhun wulf sabala",
+  "license": "ISC"
+}
