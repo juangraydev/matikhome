@@ -5,6 +5,12 @@ const app = express();
 const path = require('path');
 
 const PORT = process.env.PORT || 5000
+
+
+app.get("/api",  function(req, res) {
+  res.json("hey");
+});
+
 // --> Add this
 if (process.env.NODE_ENV === "production") {
   // Serve any static files
