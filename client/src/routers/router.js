@@ -9,6 +9,11 @@ import {
 } from "react-router-dom";
 import history from "./routing";
 
+//Layout 
+import AdminLayout from '../shared/component/adminLayout';
+import UserLayout from '../shared/component/adminLayout';
+
+//Landing
 import Landing from '../modules/LandingPage/index';
 
 //Auth Pages
@@ -28,37 +33,43 @@ import UserSettingPage from "../modules/UserPages/settings";
 const MainRouter = (props) => {
     let TOKEN = localStorage.getItem('TOKEN') || null;
   return (
-    // <ThemeProvider theme={ theme }>   
         <Router history={history}>
             <Switch>
                 <Route exact path="/">
                     <Landing /> 
                 </Route>
-                <Route exact path="/login">
+                <Route exact path={"/login"}>
                     <Login /> 
                 </Route>
                 <Route exact path="/register">
                     <Register /> 
                 </Route>
 
-                <Route exact path="/admin">
-                    <AdminDashboardPage /> 
-                </Route>
-                <Route exact path="/admin/dashboard">
-                    <AdminDashboardPage /> 
-                </Route>
-                <Route exact path="/admin/devices">
-                    <AdminAccessoriesPage /> 
-                </Route>
-                <Route exact path="/admin/users">
-                    <AdminUsersPage /> 
-                </Route>
-                <Route exact path="/home">
-                    <UserDashboardPage /> 
-                </Route>
-                <Route exact path="/accountsetting">
-                    <UserSettingPage /> 
-                </Route>
+                <AdminLayout>
+                    <Route exact path="/admin">
+                        <AdminDashboardPage /> 
+                    </Route>
+                    <Route exact path="/admin/dashboard" >
+                        <AdminDashboardPage /> 
+                    </Route>
+                    <Route exact path="/admin/accessory" >
+                        <AdminAccessoriesPage /> 
+                    </Route>
+                    <Route exact path="/admin/users">
+                        <AdminUsersPage /> 
+                    </Route>
+                </AdminLayout>
+
+                <UserLayout>
+                    <Route exact path="/home">
+                        <UserDashboardPage /> 
+                    </Route>
+                    <Route exact path="/accountsetting">
+                        <UserSettingPage /> 
+                    </Route>
+                </UserLayout>
+                    
+                
                 
             </Switch>
         </Router>
