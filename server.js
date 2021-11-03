@@ -1,26 +1,24 @@
 const express = require('express');
-const app = express();
-
-
 const path = require('path');
 
-const PORT = process.env.PORT || 5000
+const app = express();
 
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get("/api",  function(req, res) {
-  res.json("hey");
+// An api endpoint that returns a short list of items
+app.get('/api/getList', (req,res) => {
+    var list = ["item1", "item2", "item3"];
+    res.json(list);
+    console.log('Sent list of items');
 });
 
-// --> Add this
-if (process.env.NODE_ENV === "production") {
-  // Serve any static files
-  app.use(express.static(path.join(__dirnam, 'client/build')));
-// Handle React routing, return all requests to React app
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirnam, 'client/build', '/index.html'));
-  });
-}
-
-app.listen(PORT, (req, res) => {
-    console.log(`server listening on port: ${PORT}`)
+// Handles any requests that don't match the ones above
+app.get('*', (req,res) =>{
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
+
+const port = process.env.PORT || 5000;
+app.listen(port);
+
+console.log('App is listening on port ' + port);
