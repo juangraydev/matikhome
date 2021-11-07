@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useHistory } from "react-router-dom";
-
+import { useForm } from "react-hook-form";
 
 
 
@@ -37,16 +37,13 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+export default function SignIn() {
+  
+  const { register, formState: { errors }, handleSubmit } = useForm();
+  const onSubmit = data => {
+    console.log(data);
   };
+  
 
   let history = useHistory();
 
@@ -73,35 +70,38 @@ export default function SignUp() {
             alignItems: 'center',
           }}
         >
-          
           <img src={require('../../shared/images/matik2.png').default} height={200} width={200} onClick={handleLanding} />
-         
-          
           <Typography component="h1" variant="h6">
             Sign In
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
-                  required
                   fullWidth
                   id="email"
                   label="Email Address"
                   name="email"
-                  autoComplete="email"
+                  {...register("email", { 
+                    required: true, 
+                    pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 
+                    maxLength: 20 
+                  })}
                 />
+                {errors.email?.type === 'required' && "Email is required"}
+                {errors.email?.type === 'pattern' && "Email is invalid"}
+
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
                   fullWidth
                   name="password"
                   label="Password"
                   type="password"
                   id="password"
-                  autoComplete="new-password"
+                  {...register("password", { required: true, maxLength: 20 })}
                 />
+                {errors.password && "Password is required"}
               </Grid>
             </Grid>
             <Grid container justifyContent="flex-end">
