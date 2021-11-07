@@ -93,19 +93,6 @@ export default function DashboardContent(props) {
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <Drawer variant="permanent" open={true}>
-          {/* <Toolbar
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              px: [1],
-            }}
-          >
-            <IconButton>
-              <ChevronLeftIcon />
-            </IconButton>
-          </Toolbar>
-          <Divider />  */}
           <List><MainListItems /></List>
         </Drawer>
         <Box
@@ -120,7 +107,7 @@ export default function DashboardContent(props) {
             overflow: 'auto',
           }}
         >
-          <Container style={{paddingTop: 24, paddingBottom: 24 }} maxWidth="false" >
+          <Container style={{paddingTop: 10, paddingBottom: 10 }} maxWidth="false" >
             {children}
             <Copyright sx={{ pt: 4 }} />
           </Container>
