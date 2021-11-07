@@ -53,6 +53,9 @@ export default function SignUp() {
   const onSignin= ()=> {
     history.push("/login");
   }
+  const handleLanding= ()=> {
+    history.push("/");
+  }
 
   return (
     
@@ -68,7 +71,7 @@ export default function SignUp() {
           }}
         >
           
-          <img src={require('../../shared/images/matik2.png').default} height={200} width={200} onClick={onSignin} />
+          <img src={require('../../shared/images/matik2.png').default} height={200} width={200} onClick={handleLanding} />
          
           
           <Typography component="h1" variant="h6">
