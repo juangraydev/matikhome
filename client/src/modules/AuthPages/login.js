@@ -87,9 +87,9 @@ export default function SignIn() {
                     pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 
                     maxLength: 20 
                   })}
+                  error={errors.email?.type === 'required' || errors.email?.type === 'pattern'}
+                  helperText={errors.email?.type === 'required' ? "Email is required" : errors.email?.type === 'pattern' && "Email is invalid"}
                 />
-                {errors.email?.type === 'required' && "Email is required"}
-                {errors.email?.type === 'pattern' && "Email is invalid"}
 
               </Grid>
               <Grid item xs={12}>
@@ -100,8 +100,9 @@ export default function SignIn() {
                   type="password"
                   id="password"
                   {...register("password", { required: true, maxLength: 20 })}
+                  error={errors.password?.type === 'required' || errors.email?.type === 'pattern'}
+                  helperText={errors.email?.type === 'required' && "Password is required" }
                 />
-                {errors.password && "Password is required"}
               </Grid>
             </Grid>
             <Grid container justifyContent="flex-end">
