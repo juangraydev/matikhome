@@ -100,7 +100,7 @@ export default function SignIn() {
                   type="password"
                   id="password"
                   {...register("password", { required: true, maxLength: 20 })}
-                  error={errors.password?.type === 'required' || errors.email?.type === 'pattern'}
+                  error={errors.password?.type === 'required'}
                   helperText={errors.password?.type === 'required' && "Password is required" }
                 />
               </Grid>
