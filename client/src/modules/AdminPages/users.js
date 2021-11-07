@@ -1,10 +1,12 @@
 import React from "react";
+import Header from "../../shared/component/header";
 
-export default function Landing() {
+export default function AdminUsers() {
 
     return (
         <div>
-            admin users
+            <Header Title={"Admin Users"} isAdmin={true}/>
+            
         </div>
     );
 };

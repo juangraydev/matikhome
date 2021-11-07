@@ -11,7 +11,7 @@ import history from "./routing";
 
 //Layout 
 import AdminLayout from '../shared/component/adminLayout';
-import UserLayout from '../shared/component/adminLayout';
+import UserLayout from '../shared/component/userLayout';
 
 //Landing
 import Landing from '../modules/LandingPage/index';
@@ -44,7 +44,12 @@ const MainRouter = (props) => {
                 <Route exact path="/register">
                     <Register /> 
                 </Route>
-
+                <Route exact path="/home">
+                    <UserDashboardPage /> 
+                </Route>
+                <Route exact path="/accountsetting">
+                    <UserSettingPage /> 
+                </Route>
                 <AdminLayout>
                     <Route exact path="/admin">
                         <AdminDashboardPage /> 
@@ -58,17 +63,7 @@ const MainRouter = (props) => {
                     <Route exact path="/admin/users">
                         <AdminUsersPage /> 
                     </Route>
-                </AdminLayout>
-
-                <UserLayout>
-                    <Route exact path="/home">
-                        <UserDashboardPage /> 
-                    </Route>
-                    <Route exact path="/accountsetting">
-                        <UserSettingPage /> 
-                    </Route>
-                </UserLayout>
-                    
+                </AdminLayout>                    
                 
                 
             </Switch>
