@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
+import {siginService} from "./services/service"
 
 
 function Copyright(props) {
@@ -42,6 +43,7 @@ export default function SignIn() {
   const { register, formState: { errors }, handleSubmit } = useForm();
   const onSubmit = data => {
     console.log(data);
+    siginService(data);
   };
   
 
