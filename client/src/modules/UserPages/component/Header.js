@@ -39,7 +39,7 @@ export default function Header(props) {
                         <Typography variant="h6" component="div" gutterBottom display="inline">{Title}</Typography>                
                     ) :
                     (
-                        <img src={require('../images/matik-upper-02.png').default} height={35}  />            
+                        <Typography variant="h6" component="div" gutterBottom display="inline">Logo</Typography>                
                     )
                 }
 
